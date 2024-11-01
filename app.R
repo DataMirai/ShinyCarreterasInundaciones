@@ -6,10 +6,7 @@ library(tidyverse)
 library(leaflet)
 library(leaflegend)
 library(sf)
-library(rsconnect)
-rsconnect::setAccountInfo(name='mireia-camacho',
-                          token='AB2B6EE886C2E58950E9A1BC7F508AFD',
-                          secret='SXAR72YmdefjvRObJBBILEmJlCyfb/Fwo+7PJg4K')
+#library(rsconnect)
 
 
 carreteras <- read.csv("carreteras_cortadas.csv", sep = ";")
