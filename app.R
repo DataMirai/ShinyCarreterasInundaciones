@@ -6,15 +6,22 @@ library(tidyverse)
 library(leaflet)
 library(leaflegend)
 library(sf)
+library(rsconnect)
+rsconnect::setAccountInfo(name='mireia-camacho',
+                          token='AB2B6EE886C2E58950E9A1BC7F508AFD',
+                          secret='SXAR72YmdefjvRObJBBILEmJlCyfb/Fwo+7PJg4K')
 
-carreteras <- read.csv("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/carreteras_cortadas.csv", sep = ";")
+
+carreteras <- read.csv("carreteras_cortadas.csv", sep = ";")
 
 idx <- na.omit(unique(carreteras$CARRETERA))
 
-geo_carreteras_afectadas <- st_read("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/Tramos_de_carreteras/Tramos_de_carreteras.shp")%>%
-  select(1:4,9,11,12,17,23,27,33,41,42) %>% 
-  subset(nombre %in% idx) %>% 
-  sf::st_transform('+proj=longlat +datum=WGS84') 
+#geo_carreteras_afectadas <- st_read("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/Tramos_de_carreteras/Tramos_de_carreteras.shp")%>%
+#  select(1:4,9,11,12,17,23,27,33,41,42) %>% 
+#  subset(nombre %in% idx) %>% 
+ # sf::st_transform('+proj=longlat +datum=WGS84') 
+
+#geo_carreteras_afectadas <- rmapshaper::ms_simplify(geo_carreteras_afectadas, keep = 0.01)
 
 carreteras_afectadas <- na.omit(unique(carreteras$CARRETERA))
 
@@ -24,7 +31,7 @@ carreteras_afectadas <- na.omit(unique(carreteras$CARRETERA))
 #  sf::st_transform('+proj=longlat +datum=WGS84') %>% 
 #  select(1:4,9,11,12,17,23,27,33,41,42)
 
-c <- read.csv("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/incidentesDGT.csv")
+c <- read.csv("incidentesDGT.csv")
 
 ## Inspeccionar https://infocar.dgt.es/etraffic/, Network
 #a <- fromJSON(file="/Users/mireiacamacho/Desktop/BuscarElementos.json")
@@ -38,7 +45,7 @@ c <- read.csv("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/incid
 #    nivel == "NO APLICA" ~ "Obstáculos"
 #  ))
 
-header <- shinydashboard::dashboardHeader(title = tags$a(href ="https://miraidata.es/", tags$img(src='https://raw.githubusercontent.com/DataMirai/website/refs/heads/main/assets/images/LOGO_redondas_negro_fondoBlanco.png',
+header <- shinydashboard::dashboardHeader(title = tags$a(href ="https://miraidata.es/", tags$img(src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/LOGO_redondas_negro_fondoBlanco.png',
                                                                      height='40', width='210')),
                                           tags$li(class = "dropdown", style="margin:7px 20px;",
                                                   dropMenu(
@@ -76,7 +83,12 @@ body <- shinydashboard::dashboardBody(
                     div(id="textInput", tags$style(type = "text/css", "#textInput{color:white; font-size:20px;} .btn-warning{color:white; font-weight:bold; width: 100%;}"),
                       absolutePanel(
                       top = 200, left = 20, draggable = TRUE, width = "20%", style = "z-index:500; min-width: 300px; font-family: sans-serif;",
-                      textInput("geocode", "Introduce el nombre de una carretera o un pueblo:", placeholder = "Carretera o pueblo", width= "100%"),
+                      selectizeInput("geocode", "Introduce el nombre de una carretera:", width= "100%",
+                                  choices = unique(c$carretera), multiple = T, selected=NULL,
+                                  options=list(
+                                    allowEmptyOption=TRUE,
+                                    showEmptyOptionInDropdown=FALSE,
+                                    emptyOptionLabel="Todas")),
                       actionButton("go", "¡Buscar!", class = "btn-warning")#,
                       #highchartOutput("selectstat")
                     )
@@ -89,44 +101,99 @@ body <- shinydashboard::dashboardBody(
 ui <- function(){
     dashboardPage(title = "Carreteras inundadas", skin = "black", header, sidebar, body) }
 
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  filtered_data <- reactive({ 
+    c %>% filter(carretera == input$geocode) 
+  }) %>% bindEvent(input$go, ignoreInit = TRUE, ignoreNULL = FALSE)
+  
   
   output$map <- renderLeaflet({
-    pal <- 
-      colorFactor(palette = c("black", "red", "yellow", "white"), 
-                  levels = c("Interrumpida", "Retención/Corte", "Congestión", "Obstáculos"))
+    
+    data <- if(is.null(input$geocode)){
+      c
+    }else{filtered_data()}
+    
+    
+    n <- 40
+    iconos <- iconList("INC_OHZ_OHX_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "INC_OHZ_MPA_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "INC_OHZ_VAC_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "MED_REG_DO_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/5.png", iconWidth = n, iconHeight =n),
+                       "MED_REG_OTG_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/5.png", iconWidth = n, iconHeight =n),
+                       "INC_OHZ_VST_NAP_CAC.png"= makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "INC_OHZ_VFR_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "INC_MET_FLD_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/8.png", iconWidth = n, iconHeight =n),
+                       "MED_REG_RSR_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/5.png", iconWidth = n, iconHeight =n),
+                       "MED_RCN_RAD_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/5.png", iconWidth = n, iconHeight =n),
+                       "INC_FOS_OTU_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/1.png", iconWidth = n, iconHeight =n),
+                       "INC_MET_RAI_NAP_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/8.png", iconWidth = n, iconHeight =n),
+                       "INC_REN_TCN_LS3_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/13.png", iconWidth = n, iconHeight =n),
+                       "INC_MET_FLD_LS2_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/10.png", iconWidth = n, iconHeight =n),
+                       "INC_MET_FLD_LS1_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/11.png", iconWidth = n, iconHeight =n),
+                       "INC_OHZ_ROC_LS1_CAC.png" = makeIcon("https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/4.png", iconWidth = n, iconHeight =n)
+                       
+    )
+    
+    html_legend <- c("<div style = 'display: grid; grid-template-columns: 1fr 1fr;'>
+                 <h4 style= 'font-weight:bold;'>Incidencia</h4>
+                 <h4 style= 'font-weight:bold;'>Circulación</h4>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/4.png' style='height:25px; weight:25px;'> 
+                 <h5 style = 'margin-left:10px;'>Obstáculo</h5></div>
+                 
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/16.png' style='height:25px; weight:25px;'> 
+                 <h5 style = 'margin-left:10px;'>Limitada</h5></div>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/15.png' style='height:25px; weight:25px;'>
+                 <h5 style = 'margin-left:10px;'>Retenciones</h5></div>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/17.png' style='height:25px; weight:25px;'>
+                 <h5 style = 'margin-left:10px;'>Congestión</h5></div>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/11.png' style='height:25px; weight:25px;'> 
+                 <h5 style = 'margin-left:10px;'>Inundaciones</h5></div>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/18.png' style='height:25px; weight:25px;'> 
+                 <h5 style = 'margin-left:10px;'>Retención/Corte</h5></div>
+                 
+                 <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/7.png' style='height:25px; weight:25px;'>
+                 <h5 style = 'margin-left:10px;'>Restricciones</h5></div>
+                 
+                <div style = 'display: flex; justify-content:left; align-items:center;'><img src='https://raw.githubusercontent.com/DataMirai/ShinyCarreterasInundaciones/refs/heads/main/img/19.png' style='height:25px; weight:25px;'>
+                 <h5 style = 'margin-left:10px;'>Interrumpida/Corte</h5></div>
+                 </div>"
+    )
+    
     
     leaflet() %>%
       addProviderTiles("Stadia.AlidadeSmoothDark") %>%
       setView(-3.7492, 40.4636, zoom = 7) %>% 
-      addPolylines(data = st_zm(geo_carreteras_afectadas),
-                   fill = T,
-                   stroke = T,
-                   color = 'white',
-                   weight = 2,
-                   opacity = 0.5,) %>% 
-      addCircleMarkers(data = c,
-                       lng = ~lng,
-                       lat = ~lat,
-                       radius = 10,
-                       opacity = 0.8,
-                       fillOpacity = 0.5,
-                       color = ~pal(circulacion),
-                       clusterOptions = markerClusterOptions(),
-                       popup = ~paste0("<span style='font-size: 18px;'>","<b>","📍", poblacion,", ", carretera, "</b>","</span>", "<br>", 
-                                       "<span style='font-size: 14px;'>",causa, "<br>", "Del km ","<b>",pkIni,"</b>", " hasta el km ","<b>", pkFinal,"</b>", "</span>","<br>",
-                                       "<span style='font-size: 14px;'>","Sentido: ", sentido, "</span>","<br>"
-                       )) %>% 
-      leaflegend::addLegendFactor(pal = pal, shape = 'circle', orientation = 'horizontal',
-                                  position = "bottomright",
-                                  width = 33,
-                                  height = 30,
-                                  values = c$circulacion,
-                                  #labels = c("Interrumpida", "Retención/Corte", "Congestión", "Obstáculos"),
-                                  fillOpacity = .7,
-                                  title = "Aviso según el estado de la circulación"
-      )
+      #addPolylines(data = st_zm(geo_carreteras_afectadas),
+       #            fill = T,
+        #           stroke = T,
+         #          color = 'white',
+          #         weight = 2,
+           #        opacity = 0.5,) %>% 
+      addMarkers(data = data,
+                 lng = ~lng,
+                 lat = ~lat,
+                 icon = ~iconos[icono],
+                 #radius = 10,
+                 #opacity = 0.8,
+                 #fillOpacity = 0.5,
+                 #color = ~pal(circulacion),
+                 #clusterOptions = markerClusterOptions(),
+                 popup = ~paste0("<span style='font-size: 18px;'>","<b>","📍", poblacion,", ", carretera, "</b>","</span>", "<br>", 
+                                 "<span style='font-size: 14px;'>",causa, "<br>", "Del km ","<b>",pkIni,"</b>", " hasta el km ","<b>", pkFinal,"</b>", "</span>","<br>",
+                                 "<span style='font-size: 14px;'>","Sentido: ", sentido, "</span>","<br>"
+                 )) %>% 
+      addControl(html = html_legend, position = "bottomright")
   })
+  
+ 
+ 
   
 }
 
