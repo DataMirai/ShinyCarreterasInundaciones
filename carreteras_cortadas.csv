@@ -1,0 +1,156 @@
+COMUNIDAD;PROVINCIA;CARRETERA;PK INI;PK FIN;SENTIDO;LOCALIZACIÓN;HACIA;NIVEL DE SERVICIO
+Andalucía;Cádiz;A-314;1,2;1,2;AMBOS SENTIDOS;La Barca;;ROJO
+Andalucía;Cádiz;A-372;11;22;AMBOS SENTIDOS;Fuensanta - Abrajanejo;;NEGRO
+Andalucía;Cádiz;A-384;21,5;26;AMBOS SENTIDOS;Villamartín;;ROJO
+Andalucía;Cádiz;A-393;9;18;CRECIENTE DE LA KILOMETRACIÓN;Espera - Arcos de la Frontera;;NEGRO
+Andalucía;Cádiz;A-408;0;3,5;AMBOS SENTIDOS;El Almendral - Torre Alta;;ROJO
+Andalucía;Cádiz;AP-4 (RAMAL DE ENTRADA);78;78;CRECIENTE DE LA KILOMETRACIÓN;Guadalcacín;A-382 ARCOS;ROJO
+Andalucía;Cádiz;CA-3101;1;2;AMBOS SENTIDOS;Macharnudo Alto;;ROJO
+Andalucía;Cádiz;CA-3102;0;5;AMBOS SENTIDOS;Jerez de la Frontera - Macharnudo Alto;;ROJO
+Andalucía;Cádiz;CA-3108;3;1,5;AMBOS SENTIDOS;Estella del Marqués;;ROJO
+Andalucía;Cádiz;CA-3113;3,5;4,3;AMBOS SENTIDOS;Carretera Al Portal;;NEGRO
+Andalucía;Cádiz;CA-3205;7;7;AMBOS SENTIDOS;Chiclana de la Frontera;;ROJO
+Andalucía;Cádiz;CA-4107;7;7;AMBOS SENTIDOS;Los Isletes;;NEGRO
+Andalucía;Cádiz;CA-5101;1,9;12,5;AMBOS SENTIDOS;La Garrapata - Gibalbín;;NEGRO
+Andalucía;Cádiz;CA-5200;4;4;AMBOS SENTIDOS;Alcalá de los Gazules;;NEGRO
+Andalucía;Cádiz;CA-6101;7,5;8,2;AMBOS SENTIDOS;Coto de Bornos;;NEGRO
+Andalucía;Cádiz;CA-6105;8,7;8,7;AMBOS SENTIDOS;Fuensanta;;NEGRO
+Andalucía;Cádiz;CA-6200;8,2;8,2;AMBOS SENTIDOS;Alcalá de los Gazules;;NEGRO
+Andalucía;Cádiz;CA-9101;0;12;AMBOS SENTIDOS;Olvera - La Muela;;NEGRO
+Andalucía;Granada;A-4200;3;11;AMBOS SENTIDOS;Río de Baza - Benamaurel;AMBOS SENTIDOS;NEGRO
+Andalucía;Granada;GR-4104;15;16;AMBOS SENTIDOS;El Bejarín - Benalúa;;NEGRO
+Andalucía;Sevilla;SE-3102;0;2;AMBOS SENTIDOS;Sevilla;;ROJO
+Andalucía;Sevilla;SE-3105;0;10;AMBOS SENTIDOS;Carmona - Guadajoz;;NEGRO
+Andalucía;Sevilla;SE-3201;0;14;AMBOS SENTIDOS;El Viso del Alcor - Carmona;;NEGRO
+Andalucía;Sevilla;SE-4104;4;4;AMBOS SENTIDOS;Alcolea del Río;GUADAJOZ /ALCOLEA DEL RÍO;ROJO
+Andalucía;Sevilla;SE-4108;3;4;AMBOS SENTIDOS;Carmona;;NEGRO
+Andalucía;Sevilla;SE-6300;3;3,1;AMBOS SENTIDOS;Lebrija;;NEGRO
+Aragón;Teruel;TE-28;0;11,06;AMBOS SENTIDOS;Blancas - Odón;;NEGRO
+Aragón;Zaragoza;A-1105;0;4;AMBOS SENTIDOS;Pina de Ebro - Gelsa;AMBOS SENTIDOS;NEGRO
+Aragón;Zaragoza;A-1501;24;19;AMBOS SENTIDOS;Jaraba - Ibdes;;NEGRO
+Aragón;Zaragoza;Z-453;1;7;AMBOS SENTIDOS;Jaraba - Calmarza;;NEGRO
+Castilla - La Mancha;Cuenca;A-3;177;177;CRECIENTE DE LA KILOMETRACIÓN;Atalaya del Cañavate;VALENCIA;NEGRO
+Castilla - La Mancha;Cuenca;A-3;242;242;CRECIENTE DE LA KILOMETRACIÓN;Minglanilla;Valencia;NEGRO
+Castilla - La Mancha;Cuenca;CM-215 (TRAVESIA);31,6;31,6;AMBOS SENTIDOS;Landete;;NEGRO
+Castilla - La Mancha;Guadalajara;GU-952;0;5;AMBOS SENTIDOS;Luzaga - Cortes de Tajuña;;NEGRO
+Castilla - La Mancha;Guadalajara;GU-958;5;10;AMBOS SENTIDOS;Terraza - Corduente;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-10;66;81;AMBOS SENTIDOS;"les Coves de Vinromà - Sant
+Mateu";;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-10;84;90;AMBOS SENTIDOS;Sant Mateu - la Jana;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-130;4;8;AMBOS SENTIDOS;Albocàsser - Tírig;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-134;0;1,2;AMBOS SENTIDOS;la Salzadella;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-137;0;0,3;AMBOS SENTIDOS;Càlig;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-148 (SALIDA);5;5,5;AMBOS SENTIDOS;El Borseral;CAMI DE LA FUSTA;ROJO
+Comunitat Valenciana;Castelló/Castellón;CV-1486;0;0;AMBOS SENTIDOS;El Borseral;;NEGRO
+Comunitat Valenciana;Castelló/Castellón;CV-200;8;19;AMBOS SENTIDOS;Almedíjar - Aín;;NEGRO
+Comunitat Valenciana;València/Valencia;A-3;345;345;"CRECIENTE DE LA
+KILOMETRACIÓN";Barri Sant Josep Artesà;VALENCIA;ROJO
+Comunitat Valenciana;València/Valencia;A-7;302;302;"CRECIENTE DE LA
+KILOMETRACIÓN";Sagunt/Sagunto;ALICANTE;NEGRO
+Comunitat Valenciana;València/Valencia;A-7;330;343,76;"CRECIENTE DE LA
+KILOMETRACIÓN";Les Simetes - Mas del Jutge;ALICANTE;NEGRO
+Comunitat Valenciana;València/Valencia;A-7;343,76;336;"DECRECIENTE DE LA
+KILOMETRACIÓN";"Mas del Jutge - Polígono
+Industrial Sur";BARCELONA;NEGRO
+Comunitat Valenciana;València/Valencia;A-7;363;363;"CRECIENTE DE LA
+KILOMETRACIÓN";Benifaió;ALICANTE;ROJO
+Comunitat Valenciana;València/Valencia;AP-7 (SALIDA);544;544;AMBOS SENTIDOS;Carrascalet;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-33;7;8,3;AMBOS SENTIDOS;Torrent - Picanya;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-336;2;1,37;AMBOS SENTIDOS;"Urbanització El Gallipont -
+Polígono Industrial Sur";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-345;0;0,3;AMBOS SENTIDOS;Casinos;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-354;3,93;3,93;AMBOS SENTIDOS;Cañada Seca;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-36;0,5;12;AMBOS SENTIDOS;"Horno de Alcedo - Mas del
+Jutge";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-370;16,1;16,1;AMBOS SENTIDOS;Vilamarxant;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-372;4,2;4,4;AMBOS SENTIDOS;Riba-roja de Túria;336;NEGRO
+Comunitat Valenciana;València/Valencia;CV-374;0;7;AMBOS SENTIDOS;"Venta de Poio - Riba-roja de
+Túria";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-377;0;1,2;"CRECIENTE DE LA
+KILOMETRACIÓN";Pedralba;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-378;3,3;3,3;AMBOS SENTIDOS;Cheste;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-379;0;20,5;AMBOS SENTIDOS;Chiva - Gestalgar;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-380;11,8;11,8;AMBOS SENTIDOS;Pedralba;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-383;0;1,4;AMBOS SENTIDOS;Cheste;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-390;4;4;AMBOS SENTIDOS;Tuéjar;AMBOS;NEGRO
+Comunitat Valenciana;València/Valencia;CV-390;13,5;13,5;AMBOS SENTIDOS;Benagéber;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-395;27,8;27,8;AMBOS SENTIDOS;Sot de Chera;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-396;0;10,9;AMBOS SENTIDOS;"Bugarra - Villar del
+Arzobispo";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-400;1,2;4,3;"CRECIENTE DE LA
+KILOMETRACIÓN";Horno de Alcedo - Catarroja;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-401;0;6,8;"CRECIENTE DE LA
+KILOMETRACIÓN";Sedaví - El Saler;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-403;4;4;AMBOS SENTIDOS;Picanya;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-413;4,5;1,59;"DECRECIENTE DE LA
+KILOMETRACIÓN";Aldaia - Alaquàs;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-415;10;21;"CRECIENTE DE LA
+KILOMETRACIÓN";Montserrat - Turís;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-416;0;15,8;AMBOS SENTIDOS;Montserrat - Chiva;;ROJO
+Comunitat Valenciana;València/Valencia;CV-417;0;5,63;AMBOS SENTIDOS;Chiva - Godelleta;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-42;0;5;AMBOS SENTIDOS;Alzira - Carrascalet;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-421;3,5;9,2;AMBOS SENTIDOS;Godelleta - Chiva;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-422;4,3;4,3;AMBOS SENTIDOS;Turís;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-424;20;21;AMBOS SENTIDOS;Buñol;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-426;3;3;AMBOS SENTIDOS;Yátova;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-427;0;6;AMBOS SENTIDOS;Yátova - Buñol;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-429;3;34;AMBOS SENTIDOS;Yátova - La Portera;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-43;0;0;AMBOS SENTIDOS;Alzira;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-431;0;8,43;"CRECIENTE DE LA
+KILOMETRACIÓN";La Portera - Requena;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-435;20,5;20,5;AMBOS SENTIDOS;Dos Aguas;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-448;0;0,6;AMBOS SENTIDOS;San Juan;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-470;0;5;AMBOS SENTIDOS;Utiel - Los Corrales;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-472;5,3;8,2;"CRECIENTE DE LA
+KILOMETRACIÓN";Los Corrales - Las Cuevas;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-473;1;2;"CRECIENTE DE LA
+KILOMETRACIÓN";Las Cuevas;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-50;45,5;45,5;AMBOS SENTIDOS;Llombai;AMBOS;NEGRO
+Comunitat Valenciana;València/Valencia;CV-50;58;58,5;AMBOS SENTIDOS;Turís;AMBOS;NEGRO
+Comunitat Valenciana;València/Valencia;CV-50;73,5;74,5;AMBOS SENTIDOS;Chiva - Cheste;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-50;85,5;85,5;"DECRECIENTE DE LA
+KILOMETRACIÓN";Vilamarxant;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-505;0;4;AMBOS SENTIDOS;Alzira - Polinyà de Xúquer;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-506;0;2,6;"CRECIENTE DE LA
+KILOMETRACIÓN";El Pla de Corbera;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-507;0;1,13;AMBOS SENTIDOS;"Polinyà de Xúquer - Benicull
+de Xúquer";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-508;0;3,8;"CRECIENTE DE LA
+KILOMETRACIÓN";Corbera - Polinyà de Xúquer;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-509;0;5,1;AMBOS SENTIDOS;Sueca - Corbera;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-511;0;2;AMBOS SENTIDOS;Fortaleny - Riola;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-512;0;1,2;"CRECIENTE DE LA
+KILOMETRACIÓN";"Algemesí - Polinyà de
+Xúquer";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-513;0;0,125;AMBOS SENTIDOS;"Polinyà de Xúquer - Albalat
+de la Ribera";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-515;0;10;AMBOS SENTIDOS;Algemesí - Sueca;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-520;3;5;"CRECIENTE DE LA
+KILOMETRACIÓN";Benifaió;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-522;0;4,08;AMBOS SENTIDOS;Guadassuar - Raval;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-523;0;2,3;"CRECIENTE DE LA
+KILOMETRACIÓN";Guadassuar - Raval;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-525;0;4;AMBOS SENTIDOS;Carrascalet - Alginet;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-543;0;3,7;AMBOS SENTIDOS;Cogullada;AMBOS;NEGRO
+Comunitat Valenciana;València/Valencia;CV-544;0;4,68;AMBOS SENTIDOS;Guadassuar;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-545;0;4,5;"CRECIENTE DE LA
+KILOMETRACIÓN";Alberic - la Pobla Llarga;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-557;1;1;AMBOS SENTIDOS;Gavarda;AMBOS;NEGRO
+Comunitat Valenciana;València/Valencia;CV-573;2,5;0;AMBOS SENTIDOS;Barxeta;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-575;3,3;5,9;AMBOS SENTIDOS;la Torre d'en Lloris - Barxeta;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-576;1,5;6,1;AMBOS SENTIDOS;Berfull - l'Énova;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-577;0;1,28;AMBOS SENTIDOS;la Torre d'en Lloris - Manuel;;NEGRO
+Comunitat Valenciana;València/Valencia;CV-603;0;7,5;AMBOS SENTIDOS;"Masia del Racó - Tavernes
+de la Valldigna";;NEGRO
+Comunitat Valenciana;València/Valencia;CV-612;1;1;AMBOS SENTIDOS;Bellús;;NEGRO
+Comunitat Valenciana;València/Valencia;N-3;268,21;278,52;"CRECIENTE DE LA
+KILOMETRACIÓN";Villar de Olmos;VALENCIA;NEGRO
+Comunitat Valenciana;València/Valencia;N-3;294;305;AMBOS SENTIDOS;Siete Aguas - Buñol;;NEGRO
+Comunitat Valenciana;València/Valencia;N-322;454,49;454;AMBOS SENTIDOS;Villar de Olmos - El Pontón;;NEGRO
+Comunitat Valenciana;València/Valencia;N-330;194;198;AMBOS SENTIDOS;Los Corrales - Las Cuevas;;NEGRO
+Comunitat Valenciana;València/Valencia;N-332;247;251;AMBOS SENTIDOS;Masia del Racó - Cullera;;NEGRO
+Comunitat Valenciana;València/Valencia;V-30;11;3;"DECRECIENTE DE LA
+KILOMETRACIÓN";"Quart de Poblet - Castellar-
+Oliveral";PUERTO;ROJO
+Comunitat Valenciana;València/Valencia;V-31;12;5;"DECRECIENTE DE LA
+KILOMETRACIÓN";Horno de Alcedo - Silla;ALICANTE;NEGRO
