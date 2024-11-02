@@ -11,7 +11,19 @@ library(sf)
 
 carreteras <- read.csv("carreteras_cortadas.csv", sep = ";")
 
-idx <- na.omit(unique(carreteras$CARRETERA))
+idx <- na.omit(unique(carreteras$CARRETERA)) |>
+  str_extract("\\b[A-Z]+-\\d+\\b") # otherwise lines like "AP-7 (SALIDA)" will not match, we are stripping the comments
+
+geo_carreteras_afectadas <- st_read(
+  dsn = "/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/Tramos_de_carreteras/Tramos_de_carreteras.shp",
+  query = paste0(
+    "SELECT * FROM Tramos_de_carreteras WHERE nombre in ('",
+    paste(idx, collapse = "','"),
+    "')"
+    )
+  )
+
+saveRDS(geo_carreteras_afectadas, "/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/Tramos_de_carreteras/geo_carreteras_afectadas.rds")
 
 #geo_carreteras_afectadas <- st_read("/Users/mireiacamacho/Desktop/ShinySevilla/Mapa_inundaciones/Tramos_de_carreteras/Tramos_de_carreteras.shp")%>%
 #  select(1:4,9,11,12,17,23,27,33,41,42) %>% 
